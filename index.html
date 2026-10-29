@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Google 相簿展示</title>
+  <style>
+    :root {
+      --card-bg: #1e293b;
+      --text-main: #f8fafc;
+      --accent: #38bdf8;
+      --accent-hover: #0284c7;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* 適應嵌入環境：背景透明、邊距零化 */
+    html, body {
+      background-color: transparent;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      line-height: 1.5;
+      width: 100%;
+      overflow-x: hidden;
+    }
+
+    .embed-gallery-container {
+      width: 100%;
+      padding: 10px;
+    }
+
+    /* 響應式雙欄網格 */
+    main.album-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      width: 100%;
+    }
+
+    .album-card-wrap {
+      display: flex;
+    }
+
+    .album-card {
+      background-color: var(--card-bg);
+      border-radius: 12px;
+      overflow: hidden;
+      width: 100%;
+      text-decoration: none;
+      color: var(--text-main);
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .album-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 24px rgba(56, 189, 248, 0.25);
+      border-color: rgba(56, 189, 248, 0.4);
+    }
+
+    .cover-box {
+      width: 100%;
+      height: 200px;
+      overflow: hidden;
+      position: relative;
+      background-color: #0284c715;
+    }
+
+    .cover-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+
+    .album-card:hover .cover-img {
+      transform: scale(1.05);
+    }
+
+    .cover-fallback {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #1e293b, #0f172a);
+      color: var(--accent);
+      font-size: 1.1rem;
+      font-weight: bold;
+    }
+
+    .album-info {
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      flex-grow: 1;
+      gap: 14px;
+    }
+
+    .album-title {
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--text-main);
+      line-height: 1.4;
+    }
+
+    .btn-link {
+      display: inline-block;
+      text-align: center;
+      padding: 8px 14px;
+      background-color: var(--accent);
+      color: #0f172a;
+      font-weight: 700;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      transition: background-color 0.2s ease;
+    }
+
+    .album-card:hover .btn-link {
+      background-color: var(--accent-hover);
+      color: #ffffff;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="embed-gallery-container">
+    <main class="album-grid">
+      
+        <article class="album-card-wrap">
+          <a href="https://photos.google.com/share/AF1QipORfgmnbsfXdfiU6_VL_FNajDwFUmWWwHkLlcpunIhcZpb74Sticd3emfa2WCUKFw?key=T1M3dERCVVNSTllFb3J0SkZ0RXlMNm93SDNlMFp3" target="_blank" rel="noopener noreferrer" class="album-card" title="開啟 2026年10月21日三年級國語朗讀比賽">
+            <div class="cover-box">
+              <img src="https://lh3.googleusercontent.com/pw/AP1GczNkdU1ltk24nyUEa7oD0ZZ9mz5GBAOOqMvqsufF0m_2ac6jdaFHc-wQ-rQloMhFZsrsrvuRO3-qOG_LcUGinIU7x4Z3clba202N33Chbx8bWWecAGfU=w600-h315-p-k" alt="2026年10月21日三年級國語朗讀比賽" class="cover-img" loading="lazy" />
+            </div>
+            <div class="album-info">
+              <h2 class="album-title">2026年10月21日三年級國語朗讀比賽</h2>
+              <span class="btn-link">在新頁面開啟相簿 ↗</span>
+            </div>
+          </a>
+        </article>
+        
+        <article class="album-card-wrap">
+          <a href="https://photos.google.com/share/AF1QipMPCGgT5MgDs96zB78_rQcZoRMyQL59kc1HTbaltfsrNxcs_JEab4-5ahk3zmZbcA?key=enZfRERfTUxBcHZQTi1qQXRacXdENEQyQlIyTS13" target="_blank" rel="noopener noreferrer" class="album-card" title="開啟 2026年10月28日四年級國語朗讀比賽">
+            <div class="cover-box">
+              <img src="https://lh3.googleusercontent.com/pw/AP1GczPUdMP32aoqWyDJgQ5Uc82emckRnMvPXjbl8fTRVZBI7tGXDd6h_4q0X_UAvXeKewYeZz9wE39-IJEjrRnGQ9SOVyFQRu8RJAoMQePeFBRgzayYoKpK=w600-h315-p-k" alt="2026年10月28日四年級國語朗讀比賽" class="cover-img" loading="lazy" />
+            </div>
+            <div class="album-info">
+              <h2 class="album-title">2026年10月28日四年級國語朗讀比賽</h2>
+              <span class="btn-link">在新頁面開啟相簿 ↗</span>
+            </div>
+          </a>
+        </article>
+        
+    </main>
+  </div>
+
+</body>
+</html>
